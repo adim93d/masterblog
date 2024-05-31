@@ -1,4 +1,32 @@
 [
-  {"id": 1, "author": "John boris", "title": "First Post", "content": "This is my first post."},
-  {"id": 2, "author": "Jane Doe", "title": "Second Post", "content": "This is another post."}
+    {
+        "id": 1,
+        "author": "John boris",
+        "title": "First Post",
+        "content": "This is my first post."
+    },
+    {
+        "id": 2,
+        "author": "Jane Doe",
+        "title": "Second Post",
+        "content": "This is another post."
+    },
+    {
+        "id": 3,
+        "author": "dor cohen",
+        "title": "the dor",
+        "content": "ediphos & electra"
+    },
+    {
+        "id": 4,
+        "author": "adi meirovici",
+        "title": "the boob",
+        "content": "it took some time to quit the pacifaier"
+    },
+    {
+        "id": 5,
+        "author": "buy the deep",
+        "title": "dope",
+        "content": "should have bought the dip but instead I bought the top.. lost"
+    }
 ]
