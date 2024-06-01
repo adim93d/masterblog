@@ -3,7 +3,7 @@ import json
 app = Flask(__name__)
 
 
-BLOG_DATA = '/home/sec/PycharmProjects/masterblog/masterblog/blog_posts.json'
+BLOG_DATA = 'blog_posts.json'
 
 
 def read_json(json_file):
@@ -28,6 +28,12 @@ def last_id(json_file):
     data = read_json(json_file)
     last_id_num = data[last_item]['id']
     return last_id_num
+
+def fetch_post_by_id(post_id, data):
+    for post in data:
+        if post['id'] == post_id:
+            return post
+    return None
 
 
 @app.route('/')
@@ -65,6 +71,26 @@ def delete(post_id):
             updated_data.append(post)
     write_json(BLOG_DATA, updated_data)
     return redirect(url_for('index'))
+
+
+@app.route('/update/<int:post_id>', methods=['GET', 'POST'])
+def update(post_id):
+    data = read_json(BLOG_DATA)
+    post = fetch_post_by_id(post_id, data)
+    if post is None:
+        return "Post not found", 404
+
+    if request.method == 'POST':
+        # Update the post details
+        post['title'] = request.form['title']
+        post['author'] = request.form['author']
+        post['content'] = request.form['content']
+
+        # Write the updated data back to the JSON file
+        write_json(BLOG_DATA, data)
+        return redirect(url_for('index'))
+
+    return render_template('update.html', post=post)
 
 
 if __name__ == '__main__':
